@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <!-- Navbar with Cart -->
+<nav class="navbar">
+    <div class="left-section">
+      <div id="hamburger-menu" class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <p class="logo">Shopster</p>
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search for Products, Brands, and More">
+      </div>
+    </div>
+    <!-- Cart Icon -->
+    <div id="cart-icon" class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cart-count" class="cart-count">0</span>
+    </div>
+  </nav>
+  <!-- Sidebar for Hamburger Menu -->
+  <div id="sidebar-menu" class="sidebar">
+    <ul>
+      <li class="dropdown">
+        <a href="#" id="login-button" class="dropbtn">
+          <i class="fas fa-user"></i> Login <i id="login-arrow" class="fas fa-caret-down"></i>
+        </a>
+        <div id="dropdown-menu" class="dropdown-content">
+          <p>New customer? <a href="login.html">Sign Up</a></p>
+          <a href="#"><i class="fa-regular fa-user"></i> My Profile</a>
+          <a href="#"><i class="fa-solid fa-box"></i> Orders</a>
+          <a href="#"><i class="fa-solid fa-gift"></i> Rewards</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+      <!-- Product List Bar -->
+      <div class="product-bar">
+        <div class="product-category">
+          <img src="images/grossery.png" alt="Grocery">
+          <p>Grocery</p>
+        </div>
+        <div class="product-category">
+          <img src="images/mobile.png" alt="Mobiles">
+          <p>Mobiles</p>
+        </div>
+        <div class="product-category">
+          <img src="images/fashion.png" alt="Fashion">
+          <p>Fashion</p>
+        </div>
+        <div class="product-category">
+          <img src="images/electronics.png" alt="Electronics">
+          <p>Electronics</p>
+        </div>
+        <div class="product-category">
+          <img src="images/furniture.png" alt="Home & Furniture">
+          <p>Home & Furniture</p>
+        </div>
+        <div class="product-category">
+          <img src="images/appliances.png" alt="Appliances">
+          <p>Appliances</p>
+        </div>
+        <div class="product-category">
+          <img src="images/flight.png" alt="Flight Bookings">
+          <p>Flight Bookings</p>
+        </div>
+        <div class="product-category">
+          <img src="images/beauty.png" alt="Beauty, Toys & More">
+          <p>Beauty, Toys & More</p>
+        </div>
+        <div class="product-category">
+          <img src="images/two wheleer.png" alt="Two Wheelers">
+          <p>Two Wheelers</p>
+        </div>
+      </div>
+    
+    <div class="product-grid">
+        <!-- Product Card 1 -->
+        <div class="product-card" data-id="1">
+            <div class="product-images">
+                <img src="products/product 1/kurti set1.jfif" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 1/kurti1.jfif" alt="Additional Image 1">
+                    <img src="products/product 1/kurti set1.jfif" alt="Additional Image 2">
+                    <img src="products/product 1/kurti2.jpeg" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Pure cotton floral embroidery <br>3 piece Kurti set</p>
+            <p class="product-price">₹1,999.00 <span class="old-price">₹2,999</span> <span class="discount">33.3% off</span></p>
+            <p class="offers">₹1,899 with 2 Offers</p>
+            <p class="delivery">Pickup available at Threads Bangalore
+                <br>Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 1.8 <span>(20)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    
+        <!-- Product Card 2 -->
+        <div class="product-card" data-id="2">
+            <div class="product-images">
+                <img src="products/product 2/kurti 2.jfif" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 2/kurti set1.jfif" alt="Additional Image 1">
+                    <img src="products/product 2/kurti3.jfif" alt="Additional Image 2">
+                    <img src="products/product 2/kurti 2.jfif" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Cute Pockets Straight Cotton Kurti Set</p>
+            <p class="product-price">₹1,400  <span class="old-price">₹2,785</span> <span class="discount">Save Rs. 1,385</span></p>
+            <p class="offers">Tax included. Shipping calculated at checkout.</p>
+            <p class="delivery"><b>Pay online & Get an additional 5% OFF </b> 
+                <br>Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.5 <span>(11)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    
+        <!-- Product Card 3 -->
+        <div class="product-card" data-id="3">
+            <div class="product-images">
+                <img src="products/product 3/lipstick1.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 3/lipstick2.jfif" alt="Additional Image 1">
+                    <img src="products/product 3/lipstick1.jpg" alt="Additional Image 2">
+                    <img src="products/product 3/lipstick 3.jfif" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Swiss Beauty HD Matte Lipstick - 22 Brandy Harrington</p>
+            <p class="product-price">₹272</p>
+            <p class="offers">Finish : Matte
+                Color : Combo Of Red Brown Maroon
+                Net Quantity (N) : 2
+                Country of Origin : India</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 3.7 <span>(93)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    
+        <!-- Product Card 4 -->
+        <div class="product-card" data-id="4">
+            <div class="product-images">
+                <img src="products/product 4/pendant1" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 4/pandant2.jpg" alt="Additional Image 1">
+                    <img src="products/product 4/pendant1" alt="Additional Image 2">
+                    <img src="products/product 4/pandant3.jpg" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Certified 100% Natural Round Diamond Solitaire Pendant Necklace for Women - (0.70ct-1.00ct)</p>
+            <p class="product-price">£549.00</p>
+            <p class="offers">Free shipping , Free 30 Day Returns</p>
+            <p class="delivery">9k White Gold</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.4 <span>(600)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 5 -->
+        <div class="product-card" data-id="5">
+            <div class="product-images">
+                <img src="products/product 5/set1.jfif" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 5/set2.png" alt="Additional Image 1">
+                    <img src="products/product 5/set1.jfif" alt="Additional Image 2">
+                    <img src="products/product 5/set3.png" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Delicate Sunrays Diamond Necklace <br>Product Code 736A000211-1</p>
+            <p class="product-price">₹173,453</p>
+            <p class="offers">Cancellation is not available for Customized Products.<br>
+                Expected Delivery: 20-25 Days.</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.3 <span>(33)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 6 -->
+        <div class="product-card" data-id="6">
+            <div class="product-images">
+                <img src="products/product 6/ear1.webp" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 6/ear2.webp" alt="Additional Image 1">
+                    <img src="products/product 6/ear1.webp" alt="Additional Image 2">
+                    <img src="products/product 6/ear3.avif" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">CZ American Diamond Long Earring- Black</p>
+            <p class="product-price">₹2,500 <span class="old-price">₹3,000</span></p>
+            <p class="offers"><b>Care Instructions:<br>
+                Wipe up your jewelry with a soft cloth after every use.</b></p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 2.8 <span>(200)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 7 -->
+        <div class="product-card" data-id="7">
+            <div class="product-images">
+                <img src="products/product 7/brush1.jfif" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 7/brush2.jfif" alt="Additional Image 1">
+                    <img src="products/product 7/brush1.jfif" alt="Additional Image 2">
+                    <img src="products/product 7/brush3" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Bronson Professional Super Soft Bristles Bamboo Makeup Brush Set With Pouch
+                <br>(11 Pcs)
+            </p>
+            <p class="product-price">₹350 <span class="old-price">₹550</span> <span class="discount">36% off</span></p>
+            <p class="offers">inclusive of all taxes</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 3.9 <span>(88)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 8 -->
+        <div class="product-card" data-id="8">
+            <div class="product-images">
+                <img src="products/product 8/shirt1" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 8/shirt2" alt="Additional Image 1">
+                    <img src="products/product 8/shirt1" alt="Additional Image 2">
+                    <img src="products/product 8/shirt3.jpg" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Men Formal Shirt<br> Fit Full Sleeve Men's Formal's Shirt's Pack of 1</p>
+            <p class="product-price">₹1,685 <span class="old-price">₹1,999</span> <span class="discount">16% off</span></p>
+            <p class="offers">Fabric : Cotton
+                Sleeve Length : Long Sleeves
+                Pattern : Solid
+                Net Quantity (N) : 1</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.5 <span>(111)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 9 -->
+        <div class="product-card" data-id="9">
+            <div class="product-images">
+                <img src="products/product 9/saree1.jpg.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 9/saree2.jpg" alt="Additional Image 1">
+                    <img src="products/product 9/saree1.jpg.jpg" alt="Additional Image 2">
+                    <img src="products/product 9/saree3.jpeg" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">SF 644 SOFT DOLA SILK BEAUTIFUL SAREE B <br> Woven Design Zari Kanjeevaram Saree</p>
+            <p class="product-price">₹ 800 per piece <span class="old-price">₹1000</span> <span class="discount">20% off</span></p>
+            <p class="offers">₹750 with 2 Offers</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.9 <span>(320)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 10 -->
+        <div class="product-card" data-id="10">
+            <div class="product-images">
+                <img src="products/product 10/jacket1.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 10/jacket2.jfif" alt="Additional Image 1">
+                    <img src="products/product 10/jacket1.jpg" alt="Additional Image 2">
+                    <img src="products/product 10/jacket3.jfif" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">KILLER <br>
+                Men Solid Quilted Jacket <br>
+                Men Solid Casual Jacket</p>
+            <p class="product-price">₹3,467 <span class="old-price">₹6,499</span> <span class="discount">46% off</span></p>
+            <p class="offers"><b>Sold Out </b><br>
+                This item is currently out of stock</p>
+            <p class="delivery"><b>Item Weight800 g </b><br>Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 2.2 <span>(73)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 11 -->
+        <div class="product-card" data-id="11">
+            <div class="product-images">
+                <img src="products/product 11/sofa 1.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 11/sofa 2.jpg" alt="Additional Image 1">
+                    <img src="products/product 11/sofa 1.jpg" alt="Additional Image 2">
+                    <img src="products/product 11/sofa 3.jpg" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Campbell Leather 3 Seater Sofas <br>
+                Sofa frame made of Kiln-dried solid wood ensures durability. </p>
+            <p class="product-price">₹1,51,200 <span class="old-price">₹2,52,000</span> <span class="discount">40% off</span></p>
+            <p class="offers">Or pay ₹ 12,540 monthly EMI,<br> 0% interest available</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.7 <span>(852)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 12 -->
+        <div class="product-card" data-id="12">
+            <div class="product-images">
+                <img src="products/product 12/vivo1.jfif" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 12/vivo2.jpg" alt="Additional Image 1">
+                    <img src="products/product 12/vivo1.jfif" alt="Additional Image 2">
+                    <img src="products/product 12/vivo 3.jpg" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Lcd Mineral Blue Vivo Y11 Mobile, Display Size: 16.13 Cm (6.35 Inch)</p>
+            <p class="product-price">₹8,999 <span class="old-price">₹9,999</span> <span class="discount">10% off</span></p>
+            <p class="offers">Color
+                Mineral Blue
+                Brand
+                Vivo
+                Display Size
+                16.13 cm (6.35 inch)
+                Display Type
+                LCD
+                RAM
+                3 GB
+                Operating System
+                Android Pie 9
+                Resolution
+                720 x 1544 Pixels</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 3.7 <span>(53)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 13 -->
+        <div class="product-card" data-id="13">
+            <div class="product-images">
+                <img src="products/product 13/teddy1.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 13/teddy2.jpg" alt="Additional Image 1">
+                    <img src="products/product 13/teddy1.jpg" alt="Additional Image 2">
+                    <img src="products/product 13/teddy3.jpg" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Teddy Bear 3 Feet Long Gaint Size Soft Toy For Kids</p>
+            <p class="product-price">₹699 <span class="old-price">₹999</span> <span class="discount">30% off</span></p>
+            <p class="offers">Product Breadth : 10.5 Inch
+                Product Height : 15 Inch
+                Product Length : 14.5 Inch</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 3.7 <span>(53)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 14 -->
+        <div class="product-card" data-id="14">
+            <div class="product-images">
+                <img src="products/product 14/frock1.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 14/frock2.jpg" alt="Additional Image 1">
+                    <img src="products/product 14/frock1.jpg" alt="Additional Image 2">
+                    <img src="products/product 14/frock 3.jfif" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name"><b>ZARTAJ </b> <br>Girls Calf Length Party Dress</p>
+            <p class="product-price">₹349 <span class="old-price">₹1,299</span> <span class="discount">73% off</span></p>
+            <p class="offers">₹396 with 2 Offers</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 3.8 <span>(408)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 15 -->
+        <div class="product-card" data-id="15">
+            <div class="product-images">
+                <img src="products/product 15/sugar1.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 15/sugar2.jpg" alt="Additional Image 1">
+                    <img src="products/product 15/sugar1.jpg" alt="Additional Image 2">
+                    <img src="products/product 15/sugar 3.jfif" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Sweet Natural Rich Fine Taste Madhur Pure Hygienic White Sugar, 5 Kg Pack Type: Sack Bag</p>
+            <p class="product-price">₹240</p>
+            <p class="offers">Minimum Order Quantity : 10 Kilograms</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.1 <span>(83)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- Product Card 16 -->
+        <div class="product-card" data-id="16">
+            <div class="product-images">
+                <img src="products/product 16/saree1.jpg" alt="Main Product Image" class="main-image">
+                <div class="additional-images">
+                    <img src="products/product 16/saree2.jfif" alt="Additional Image 1">
+                    <img src="products/product 16/saree1.jpg" alt="Additional Image 2">
+                    <img src="products/product 16/saree3" alt="Additional Image 3">
+                </div>
+            </div>
+            <p class="product-name">Pure Dola silk saree with beautiful design..</p>
+            <p class="product-price">₹862</p>
+            <p class="offers">₹799 with 2 Offers</p>
+            <p class="delivery">Free Delivery</p>
+            <p class="rating"><i class="fas fa-star"></i> 4.2 <span>(102)</span></p>
+            <div class="product-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Heart Icon -->
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </div> 
+<!-- Order Form Modal (Initially Hidden) -->
+<div id="order-form" class="order-form">
+      <button id="close-order-form" class="close-order-form">X</button>
+    <div class="order-form-content">
+      <div class="order-product-details">
+        <img id="order-product-image" src="" alt="Product Image" class="order-product-image" style="max-width: 100px; margin-right: 20px; display: none;">
+        <div class="order-product-info">
+          <p id="order-product-name" class="order-product-name">Product Name</p>
+          <p id="order-product-price" class="order-product-price">Product Price</p>
+        </div>
+      </div>
+      <!-- Form Fields for Customer Information -->
+      <label for="customer-name">Name</label>
+      <input type="text" id="customer-name" placeholder="Enter your name" required>
+      
+      <label for="customer-email">Email</label>
+      <input type="email" id="customer-email" placeholder="Enter your email" required>
+      
+      <label for="customer-address">Address</label>
+      <textarea id="customer-address" placeholder="Enter your address" required></textarea>
+      
+      <button id="submit-order" class="submit-order">Submit Order</button>
+      <button id="cancel-order" class="cancel-order">Cancel</button> <!-- Cancel Button -->
+    </div>
+  </div>  
+    <!-- Customer Reviews Section -->
+<div class="reviews-section">
+    <h2>Customer Reviews</h2>
+
+    <!-- Reviews Display Section -->
+    <div class="review-display">
+        <iframe id="review-iframe" class="review-iframe" srcdoc="
+        <style>
+            body { font-family: Arial, sans-serif; margin: 0; padding: 10px; overflow-y: auto; }
+            .review { padding: 10px; border-bottom: 1px solid #ddd; }
+            .review:last-child { border-bottom: none; }
+            .review strong { color: #007bff; }
+            .rating { color: gold; }
+        </style>
+        <div class='review'>
+            <p><strong>John Doe</strong></p>
+            <p>'Great product, fast delivery! Highly recommend.'</p>
+            <span class='rating'>⭐⭐⭐⭐⭐</span>
+        </div>
+        <div class='review'>
+            <p><strong>Jane Smith</strong></p>
+            <p>'Affordable prices and good quality products. Will shop again.'</p>
+            <span class='rating'>⭐⭐⭐⭐</span>
+        </div>
+        <div class='review'>
+            <p><strong>Michael Johnson</strong></p>
+            <p>'Customer service was very helpful. The item matched the description.'</p>
+            <span class='rating'>⭐⭐⭐⭐⭐</span>
+        </div>
+        "></iframe>
+    </div>
+
+    <!-- Add Review Form -->
+    <div class="add-review">
+        <h3>Submit Your Review</h3>
+        <form id="review-form">
+            <input type="text" id="review-name" placeholder="Your Name" required>
+            <textarea id="review-text" placeholder="Write your review here" required></textarea>
+            <select id="review-rating" required>
+                <option value="">Select Rating</option>
+                <option value="⭐⭐⭐⭐⭐">5 Stars</option>
+                <option value="⭐⭐⭐⭐">4 Stars</option>
+                <option value="⭐⭐⭐">3 Stars</option>
+                <option value="⭐⭐">2 Stars</option>
+                <option value="⭐">1 Star</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- Newsletter Signup Form -->
+<div class="newsletter-section">
+    <h2>Subscribe to Our Newsletter</h2>
+    <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+    </form>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#">Learn More</a> 
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="footer-text">© 2025 Shopster. All rights reserved.</p>
+</footer>
+
+<script src="javascript.js"></script>
+</body>
+</html>
