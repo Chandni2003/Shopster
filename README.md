@@ -27,12 +27,6 @@
 
 ---
 
-## 🖥️ Screenshots
-
-> Add screenshots here after deployment
-
----
-
 ## 📁 Project Structure
 
 ```
