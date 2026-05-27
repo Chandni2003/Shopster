@@ -7,6 +7,7 @@ import LoginModal from "./components/LoginModal";
 import ProductModal from "./components/ProductModal";
 import CheckoutPage from "./components/CheckoutPage";
 import NotificationBell from "./components/NotificationBell";
+import WishlistDrawer from "./components/WishlistDrawer";
 
 const SORT_OPTIONS = [
   "Featured",
@@ -16,7 +17,6 @@ const SORT_OPTIONS = [
   "Most Reviews",
 ];
 
-// DummyJSON returns prices in USD — convert to INR
 function enrichProduct(p) {
   const priceINR = Math.round(p.price * 83);
   const discountPct = Math.round(p.discountPercentage) || 10;
@@ -49,6 +49,7 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showCheckout, setShowCheckout] = useState(false);
@@ -56,7 +57,6 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [toast, setToast] = useState(null);
 
-  // ── Fetch 200 products from DummyJSON ──────────────────────────────────────
   useEffect(() => {
     Promise.all([
       fetch("https://dummyjson.com/products?limit=200&skip=0").then((r) => r.json()),
@@ -64,7 +64,6 @@ export default function App() {
     ])
       .then(([productsData, catsData]) => {
         setProducts(productsData.products.map(enrichProduct));
-        // Build category list from API
         const catNames = catsData.map((c) =>
           (typeof c === "string" ? c : c.slug || c.name)
             .split("-")
@@ -102,21 +101,16 @@ export default function App() {
     setCart((prev) => {
       const existing = prev.find((i) => i.id === product.id);
       return existing
-        ? prev.map((i) =>
-            i.id === product.id ? { ...i, qty: i.qty + 1 } : i
-          )
+        ? prev.map((i) => i.id === product.id ? { ...i, qty: i.qty + 1 } : i)
         : [...prev, { ...product, qty: 1 }];
     });
     setToast(`"${product.title.slice(0, 28)}..." added to cart!`);
   };
 
-  const removeFromCart = (id) =>
-    setCart((prev) => prev.filter((i) => i.id !== id));
+  const removeFromCart = (id) => setCart((prev) => prev.filter((i) => i.id !== id));
   const changeQty = (id, delta) =>
     setCart((prev) =>
-      prev.map((i) =>
-        i.id === id ? { ...i, qty: Math.max(1, i.qty + delta) } : i
-      )
+      prev.map((i) => i.id === id ? { ...i, qty: Math.max(1, i.qty + delta) } : i)
     );
   const toggleWishlist = (id) =>
     setWishlist((prev) =>
@@ -124,8 +118,8 @@ export default function App() {
     );
 
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
+  const wishlistItems = products.filter((p) => wishlist.includes(p.id));
 
-  // Dark mode colors
   const bg = darkMode ? "#0f172a" : "#f8fafc";
   const card = darkMode ? "#1e293b" : "#fff";
   const text = darkMode ? "#f1f5f9" : "#111827";
@@ -146,14 +140,7 @@ export default function App() {
     );
 
   return (
-    <div
-      style={{
-        fontFamily: "'Outfit','Segoe UI',sans-serif",
-        background: bg,
-        minHeight: "100vh",
-        transition: "background 0.3s",
-      }}
-    >
+    <div style={{ fontFamily: "'Outfit','Segoe UI',sans-serif", background: bg, minHeight: "100vh", transition: "background 0.3s" }}>
       <style>{`
         * { box-sizing:border-box; margin:0; padding:0; }
         @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
@@ -171,17 +158,15 @@ export default function App() {
       `}</style>
 
       {/* ── NAVBAR ── */}
-      <nav
-        style={{
-          position: "sticky", top: 0, zIndex: 100,
-          background: darkMode ? "rgba(15,23,42,0.97)" : "rgba(255,255,255,0.97)",
-          backdropFilter: "blur(16px)",
-          borderBottom: `1px solid ${bdr}`,
-          padding: "0 20px", height: 64,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          boxShadow: "0 1px 16px rgba(0,0,0,0.07)", transition: "all 0.3s",
-        }}
-      >
+      <nav style={{
+        position: "sticky", top: 0, zIndex: 100,
+        background: darkMode ? "rgba(15,23,42,0.97)" : "rgba(255,255,255,0.97)",
+        backdropFilter: "blur(16px)",
+        borderBottom: `1px solid ${bdr}`,
+        padding: "0 20px", height: 64,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        boxShadow: "0 1px 16px rgba(0,0,0,0.07)", transition: "all 0.3s",
+      }}>
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg,#6366f1,#8b5cf6)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(99,102,241,0.35)" }}>
@@ -213,15 +198,32 @@ export default function App() {
 
         {/* Actions */}
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+
+          {/* Dark Mode */}
           <button
             onClick={() => setDarkMode((d) => !d)}
             style={{ width: 38, height: 38, borderRadius: 10, border: `1.5px solid ${bdr}`, background: darkMode ? "#1e293b" : "#f3f4f6", cursor: "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center" }}
           >
             {darkMode ? "☀️" : "🌙"}
           </button>
-          {/* notification bell */}
+
+          {/* Notification Bell */}
           <NotificationBell darkMode={darkMode} />
 
+          {/* Wishlist */}
+          <button
+            onClick={() => setWishlistOpen(true)}
+            style={{ width: 38, height: 38, borderRadius: 10, border: `1.5px solid ${bdr}`, background: darkMode ? "#1e293b" : "#f3f4f6", cursor: "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}
+          >
+            ❤️
+            {wishlist.length > 0 && (
+              <span style={{ position: "absolute", top: -4, right: -4, background: "#ef4444", color: "#fff", borderRadius: "50%", width: 18, height: 18, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white" }}>
+                {wishlist.length}
+              </span>
+            )}
+          </button>
+
+          {/* User */}
           {user ? (
             <div
               onClick={() => { setUser(null); setToast("Logged out!"); }}
@@ -241,6 +243,7 @@ export default function App() {
             </button>
           )}
 
+          {/* Cart */}
           <button
             onClick={() => setCartOpen(true)}
             style={{ background: "linear-gradient(135deg,#6366f1,#8b5cf6)", border: "none", borderRadius: 10, padding: "9px 16px", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", gap: 6, boxShadow: "0 4px 14px rgba(99,102,241,0.4)", fontFamily: "inherit" }}
@@ -265,7 +268,7 @@ export default function App() {
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%,rgba(255,255,255,0.08),transparent 45%),radial-gradient(circle at 85% 20%,rgba(255,255,255,0.06),transparent 40%)" }} />
         <div style={{ position: "relative" }}>
           <div style={{ display: "inline-flex", background: "rgba(255,255,255,0.15)", borderRadius: 20, padding: "4px 14px", fontSize: 12, color: "rgba(255,255,255,0.9)", fontWeight: 600, marginBottom: 14, backdropFilter: "blur(8px)" }}>
-            ⚡ 200+ Products · 30+ Categories · Live 
+            ⚡ 200+ Products · 30+ Categories · Live from DummyJSON API
           </div>
           <h1 style={{ fontSize: "clamp(26px,4vw,44px)", fontWeight: 900, color: "#fff", lineHeight: 1.2, marginBottom: 10 }}>
             Everything You Love,<br />Delivered to Your Door
@@ -287,22 +290,17 @@ export default function App() {
       {/* ── MAIN ── */}
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "24px 20px" }}>
 
-        {/* Category Tabs — scrollable */}
+        {/* Category Tabs */}
         <div className="cat-scroll" style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 8, marginBottom: 20 }}>
           {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setCategory(cat)}
-              style={{
-                padding: "8px 16px", borderRadius: 20, border: "1.5px solid",
-                borderColor: category === cat ? "#6366f1" : bdr,
-                background: category === cat ? "#6366f1" : card,
-                color: category === cat ? "#fff" : text,
-                fontSize: 12, fontWeight: 600, cursor: "pointer",
-                whiteSpace: "nowrap", fontFamily: "inherit", transition: "all 0.2s",
-                flexShrink: 0,
-              }}
-            >
+            <button key={cat} onClick={() => setCategory(cat)} style={{
+              padding: "8px 16px", borderRadius: 20, border: "1.5px solid",
+              borderColor: category === cat ? "#6366f1" : bdr,
+              background: category === cat ? "#6366f1" : card,
+              color: category === cat ? "#fff" : text,
+              fontSize: 12, fontWeight: 600, cursor: "pointer",
+              whiteSpace: "nowrap", fontFamily: "inherit", transition: "all 0.2s", flexShrink: 0,
+            }}>
               {cat}
             </button>
           ))}
@@ -319,11 +317,7 @@ export default function App() {
               </>
             )}
           </div>
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            style={{ padding: "8px 12px", border: `1.5px solid ${bdr}`, borderRadius: 10, fontSize: 13, fontFamily: "inherit", background: card, color: text, fontWeight: 600, cursor: "pointer" }}
-          >
+          <select value={sort} onChange={(e) => setSort(e.target.value)} style={{ padding: "8px 12px", border: `1.5px solid ${bdr}`, borderRadius: 10, fontSize: 13, fontFamily: "inherit", background: card, color: text, fontWeight: 600, cursor: "pointer" }}>
             {SORT_OPTIONS.map((o) => <option key={o}>{o}</option>)}
           </select>
         </div>
@@ -352,22 +346,15 @@ export default function App() {
               <div style={{ fontSize: 52, marginBottom: 14 }}>🔍</div>
               <div style={{ fontSize: 18, fontWeight: 700, color: text, marginBottom: 8 }}>No products found</div>
               <div style={{ fontSize: 13, color: sub }}>Try a different search or category</div>
-              <button
-                onClick={() => { setSearch(""); setCategory("All"); }}
-                style={{ marginTop: 16, padding: "10px 24px", background: "#6366f1", color: "#fff", border: "none", borderRadius: 10, cursor: "pointer", fontWeight: 700, fontFamily: "inherit" }}
-              >Clear Filters</button>
+              <button onClick={() => { setSearch(""); setCategory("All"); }} style={{ marginTop: 16, padding: "10px 24px", background: "#6366f1", color: "#fff", border: "none", borderRadius: 10, cursor: "pointer", fontWeight: 700, fontFamily: "inherit" }}>Clear Filters</button>
             </div>
           ) : (
             <div className="product-grid">
               {filtered.map((p, i) => (
-                <div
-                  key={p.id}
-                  style={{ animation: `fadeUp 0.4s ease ${Math.min(i, 8) * 0.04}s both`, cursor: "pointer" }}
-                  onClick={() => setSelectedProduct(p)}
-                >
+                <div key={p.id} style={{ animation: `fadeUp 0.4s ease ${Math.min(i, 8) * 0.04}s both`, cursor: "pointer" }} onClick={() => setSelectedProduct(p)}>
                   <ProductCard
                     product={p}
-                    onAddToCart={(e) => { addToCart(p); }}
+                    onAddToCart={() => addToCart(p)}
                     onWishlist={toggleWishlist}
                     wishlisted={wishlist.includes(p.id)}
                   />
@@ -418,6 +405,16 @@ export default function App() {
         />
       )}
 
+      {/* WISHLIST */}
+      {wishlistOpen && (
+        <WishlistDrawer
+          wishlistItems={wishlistItems}
+          onClose={() => setWishlistOpen(false)}
+          onRemove={toggleWishlist}
+          onAddToCart={addToCart}
+        />
+      )}
+
       {/* LOGIN */}
       {loginOpen && (
         <LoginModal
@@ -426,7 +423,7 @@ export default function App() {
         />
       )}
 
-      {/* PRODUCT DETAIL */}
+      {/* PRODUCT MODAL */}
       {selectedProduct && (
         <ProductModal
           product={selectedProduct}
